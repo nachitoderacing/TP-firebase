@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+import { getDatabase, ref, set, push} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
 const firebaseconfig = {
     apiKey: "AIzaSyCu34ILmE0P0c4Xpy2oEEDbbUkIr4vz5Js",
@@ -27,12 +27,12 @@ botonagregar.onclick = function () {
 
     let galeriaref = ref(db, "galeria de arte/" + inputid.value);
 
-    set(galeriaref, {
+    push(galeriaref, {
         id: inputid.value,
         nombre: inputnombre.value,
         ubicacion: inputubicacion.value,
         especialidad: inputespecialidad.value,
-        imagen: inputimagen.value
+        imagen: inputimagen.value,
     })
 
     .then(() => {
@@ -44,19 +44,16 @@ botonagregar.onclick = function () {
 };
 
 let datosgalerias = document.querySelector("#datosgalerias");
-
 let galeriaref = ref(db, "galeria de arte");
 
-onValue(galeriaref, (datos) => {
+onValue(galeriaref, (datos) => 
 
     let galerias = datos.val();
 
     datosgalerias.innerHTML = "";
 
     for (let id in galerias) {
-
         let galeria = galerias[id];
-
         let div = document.createElement("div");
 
         div.innerHTML = `
@@ -71,3 +68,13 @@ onValue(galeriaref, (datos) => {
         datosgalerias.appendChild(div);
     }
 });
+
+
+
+for (let id in galerias) {
+    let galeria = galerias[id];
+    let buscar = document.getElementById(galeriasref);
+
+    let buscar = onValue(getDatabase)
+    div.innerHTML = `
+    <button>${botondebusqueda}</button> `  }
