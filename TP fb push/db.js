@@ -36,19 +36,19 @@ botonagregar.onclick = function () {
     })
 
     .then(() => {
-        alert("Galeria agregada correctamente");
+        alert("galeria agregada correctamente");
     })
     .catch((error) => {
-        alert("Error al agregar la galeria ");
+        alert("error al agregar la galeria ");
     });
 };
 
 let datosgalerias = document.querySelector("#datosgalerias");
-let galeriaref = ref(db, "galeria de arte");
+let galeriaubibacion = set(db, "/galeria de arte");
 
-onValue(galeriaref, (datos) => 
+onValue(galeriaubibacion, (datos) => 
 
-    let galerias = datos.val();
+let galerias = datos.val();
 
     datosgalerias.innerHTML = "";
 
@@ -66,15 +66,10 @@ onValue(galeriaref, (datos) =>
         `;
 
         datosgalerias.appendChild(div);
-    }
-});
-
-
+    };
 
 for (let id in galerias) {
     let galeria = galerias[id];
     let buscar = document.getElementById(galeriasref);
-
     let buscar = onValue(getDatabase)
-    div.innerHTML = `
-    <button>${botondebusqueda}</button> `  }
+    div.innerHTML = `<button>${botondebusqueda}</button> `  };
